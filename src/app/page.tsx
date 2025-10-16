@@ -7,8 +7,8 @@ export default function Home() {
     <div>
       <h1 className="font-bold text-4xl">Home</h1>
       <div className="flex items-center justify-between">
-        <h1>Snippets</h1>
-        <Link href="/snippet/new"><Button className="cursor-pointer">New</Button></Link>
+        <h1 className="mt-4 text-2xl">Snippets</h1>
+        <Link href="/snippet/new"><Button className="cursor-pointer bg-amber-800">New</Button></Link>
       </div>
     </div>
   );
