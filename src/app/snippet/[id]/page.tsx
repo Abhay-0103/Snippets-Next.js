@@ -11,8 +11,8 @@ const SnippetDetailPage = async ({
   params: Promise<{ id: string }>;
 }) => {
   const id = parseInt((await params).id);
-  
-  await new Promise((r) => setTimeout(r, 2000) );
+
+  await new Promise((r) => setTimeout(r, 2000));
 
   const snippet = await prisma.snippet.findUnique({
     where: {
@@ -33,7 +33,11 @@ const SnippetDetailPage = async ({
             <Button className="bg-amber-500">Edit</Button>
           </Link>
           <form action={deleteSnippetAction}>
-            <Button variant={"destructive"} type="submit" className="bg-red-600">
+            <Button
+              variant={"destructive"}
+              type="submit"
+              className="bg-red-600"
+            >
               Delete
             </Button>
           </form>
@@ -48,11 +52,10 @@ const SnippetDetailPage = async ({
 
 export default SnippetDetailPage;
 
-
 export const generateStaticParams = async () => {
   const snippets = await prisma.snippet.findMany();
 
   return snippets.map((snippets) => {
-    return {id:snippet.id.toString()}
-  })
-}
+    return { id: snippet.id.toString() };
+  });
+};
