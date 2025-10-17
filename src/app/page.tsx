@@ -2,11 +2,13 @@ import { Button } from "@/components/ui/button";
 import { prisma } from "@/lib/prisma";
 import Link from "next/link";
 
-{/*
+{
+  /*
 // Disable caching method
 export const dynamic = "force-dynamic" // disabling the caching feature --> Dynamic route
 export const revalidate = 0; // getting always fresh data
-*/}
+*/
+}
 
 export default async function Home() {
   const snippets = await prisma.snippet.findMany();
@@ -17,14 +19,21 @@ export default async function Home() {
       <div className="flex items-center justify-between">
         <h1 className="mt-4 text-2xl">Snippets</h1>
         <Link href="/snippet/new">
-          <Button className="cursor-pointer bg-amber-800">Create New Snippet</Button>
+          <Button className="cursor-pointer bg-amber-800">
+            Create New Snippet
+          </Button>
         </Link>
-      </div >
+      </div>
       {snippets.map((snippet) => (
-        <div key={snippet.id} className="flex items-center justify-between p-2 mt-2 rounded-md my-2 bg-gray-700">
+        <div
+          key={snippet.id}
+          className="flex items-center justify-between p-2 mt-2 rounded-md my-2 bg-gray-700"
+        >
           <h1 className="p-3">{snippet.title}</h1>
           <Link href={`/snippet/${snippet.id}`} className="p-4">
-            <Button className="bg-amber-600 mt-2" variant={'link'}>View</Button>
+            <Button className="bg-amber-600 mt-2" variant={"link"}>
+              View
+            </Button>
           </Link>
         </div>
       ))}
