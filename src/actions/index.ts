@@ -24,22 +24,30 @@ export const deleteSnippet = async (id: number) => {
 }
 
 export async function createSnippet(prevState: { message: string }, formData: FormData) {
-    const title = formData.get("title");
-    const code = formData.get("code");
 
-    if (typeof title !== "string" || title.length < 4) {
-        return { message: "Title Is Required And Much Be Longer" }
+    try {
+        const title = formData.get("title");
+        const code = formData.get("code");
+
+        if (typeof title !== "string" || title.length < 4) {
+            return { message: "Title Is Required And Much Be Longer" }
+        }
+        if (typeof code !== "string" || code.length < 4) {
+            return { message: "Code Is Required And Much Be Longer" }
+        }
+
+        await prisma.snippet.create({
+            data: {
+                title,
+                code,
+            }
+        });
+
+
+        throw new Error("Oops Something went wrong");
+    } catch (error: any) {
+        return { message: error.message }
     }
-    if (typeof code !== "string" || code.length < 4) {
-        return { message: "Code Is Required And Much Be Longer" }
-    }
 
-    const snippet = await prisma.snippet.create({
-        data: {
-            title,
-            code,
-        },
-
-    })
     redirect("/")
 }
