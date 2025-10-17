@@ -45,8 +45,12 @@ export async function createSnippet(prevState: { message: string }, formData: Fo
 
 
         throw new Error("Oops Something went wrong");
-    } catch (error: any) {
-        return { message: error.message }
+    } catch (error: unknown) {
+        if (error instanceof Error) {
+            return { message: error.message }
+        } else {
+            return {message:"Some Internal Server Error"}
+        }
     }
 
     redirect("/")
