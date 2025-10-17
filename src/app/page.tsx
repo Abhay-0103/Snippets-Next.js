@@ -11,7 +11,7 @@ export default async function Home() {
       <div className="flex items-center justify-between">
         <h1 className="mt-4 text-2xl">Snippets</h1>
         <Link href="/snippet/new">
-          <Button className="cursor-pointer bg-amber-800">New</Button>
+          <Button className="cursor-pointer bg-amber-800">Create New Snippet</Button>
         </Link>
       </div >
       {snippets.map((snippet) => (
