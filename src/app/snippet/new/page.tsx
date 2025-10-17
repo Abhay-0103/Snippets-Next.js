@@ -44,7 +44,7 @@ const CreateSnippetPage = () => {
         type="submit"
         className="p-3 font-bold cursor-pointer my-4 bg-amber-700 mx-4"
       >
-        New
+        Create
       </Button>
     </form>
   );
