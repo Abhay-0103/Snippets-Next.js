@@ -2,7 +2,7 @@
 
 import { prisma } from "@/lib/prisma"
 import { redirect } from "next/navigation";
-import {revalidatePath} from "next/cache";
+import { revalidatePath } from "next/cache";
 
 export const saveSnippet = async (id: number, code: string) => {
     await prisma.snippet.update({
@@ -13,7 +13,7 @@ export const saveSnippet = async (id: number, code: string) => {
             code
         }
     });
-revalidatePath(`/snippet/${id}`);
+    revalidatePath(`/snippet/${id}`);
     redirect(`/snippet/${id}`)
 }
 
@@ -52,7 +52,7 @@ export async function createSnippet(prevState: { message: string }, formData: Fo
         if (error instanceof Error) {
             return { message: error.message }
         } else {
-            return {message:"Some Internal Server Error"}
+            return { message: "Some Internal Server Error" }
         }
     }
 
