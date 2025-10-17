@@ -2,6 +2,12 @@ import { Button } from "@/components/ui/button";
 import { prisma } from "@/lib/prisma";
 import Link from "next/link";
 
+{/*
+// Disable caching method
+export const dynamic = "force-dynamic" // disabling the caching feature --> Dynamic route
+export const revalidate = 0; // getting always fresh data
+*/}
+
 export default async function Home() {
   const snippets = await prisma.snippet.findMany();
 
